@@ -11,4 +11,11 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index]
   resources :videos, except: [:index, :new]
+
+
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :videos, only: [:index]
+    end
+  end
 end

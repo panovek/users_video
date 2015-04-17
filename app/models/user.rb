@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
 
   has_many :videos, dependent: :destroy
 
+  before_create do |user|
+    user.api_key = user.generate_api_key
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -20,5 +24,10 @@ class User < ActiveRecord::Base
     user
   end
 
-
+  def generate_api_key
+    loop do
+      token = Devise.friendly_token[0,30]
+      break token unless User.exists?(api_key: token)
+    end
+  end
 end
