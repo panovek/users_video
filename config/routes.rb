@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     match 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session, :via => Devise.mappings[:user].sign_out_via
   end
 
-  resources :users
+  resources :users, except: [:index]
+  resources :videos, except: [:index, :new]
 end

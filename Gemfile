@@ -11,16 +11,16 @@ gem 'jbuilder', '~> 2.0'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-end
+gem 'dragonfly'
+gem 'dragonfly-s3_data_store'
+
 gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 gem 'devise'
 gem 'haml-rails'
 gem 'pg'
 gem 'simple_form'
+
 group :development do
   gem 'better_errors'
   gem 'html2haml'
@@ -28,14 +28,20 @@ group :development do
   gem 'rails_layout'
   gem 'spring-commands-rspec'
 end
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
 end
+
 group :production do
   gem 'rails_12factor'
 end
+
 group :test do
   gem 'capybara'
   gem 'database_cleaner'

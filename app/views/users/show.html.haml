@@ -1,5 +1,23 @@
-%h3 User
-%p
-  Name: #{@user.name if @user.name}
-%p
-  Email: #{@user.email if @user.email}
+= link_to 'Add video', '#', class: 'btn btn-default', data: {toggle: 'modal', target: '#add-user-video'}
+
+- @video = current_user.videos.new
+.modal.fade#add-user-video{role: 'dialog', aria_labelledby: 'add-user-video-modal', aria_hidden: true}
+  .modal-dialog
+    .modal-content
+      = form_for @video do |f|
+        .modal-header
+          %button.close{type: 'button', data: {dismiss: 'modal'}, aria_label: 'Close'}
+            %span{aria_hidden: true}
+              &times;
+          %h4.modal-title#add-user-video-modal
+            Загрузите ваше видео
+        .modal-body
+          .field
+            = f.label :title, 'Название: '
+            = f.text_field :title, :required => true, placeholder: 'Название видео'
+          .field
+            = f.file_field :video, required: true
+        .modal-footer
+          %button.btn.btn-default{type: 'button', data:{dismiss: 'modal'}}
+            Закрыть
+          = f.submit 'Отправить', class: ' btn btn-primary'

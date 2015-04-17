@@ -1,0 +1,12 @@
+.avatar {
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
+}
+
+.sign-in-button {
+  margin-top: 50px;
+  & span {
+    vertical-align: top;
+  }
+}
