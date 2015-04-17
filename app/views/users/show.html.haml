@@ -1,6 +1,16 @@
+- @video ||= current_user.videos.new
+= render 'shared/errors', object: @video
+
 = link_to 'Add video', '#', class: 'btn btn-default', data: {toggle: 'modal', target: '#add-user-video'}
 
-- @video = current_user.videos.new
+%p
+  - if @user.videos.present?
+    Your video list:
+    %ul
+      = render @user.videos
+  - else
+    Your video list empty now.
+
 .modal.fade#add-user-video{role: 'dialog', aria_labelledby: 'add-user-video-modal', aria_hidden: true}
   .modal-dialog
     .modal-content

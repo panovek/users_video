@@ -5,6 +5,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless @user == current_user
       redirect_to :back, :alert => "Access denied."
+    else
+      @video = current_user.videos.new
     end
   end
 

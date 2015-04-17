@@ -1,0 +1,6 @@
+- if object.errors.any?
+  #errors_full_text.bg-warning
+    %h2 Found these errors when saving:
+    %ul
+      - object.errors.full_messages.each do |msg|
+        %li= msg

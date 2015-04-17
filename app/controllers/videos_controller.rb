@@ -8,7 +8,20 @@ class VideosController < ApplicationController
     else
       flash[:alert] = 'Some problems with upload video.'
     end
-    redirect_to current_user
+    @user = current_user
+    render 'users/show'
+  end
+
+  def destroy
+    video = Video.find(params[:id])
+    unless video.user == current_user
+      flash[:alert] = "Access denied."
+    else
+      video.destroy
+      flash[:notice] = 'Video was success destroyed.'
+    end
+    @user = current_user
+    render 'users/show'
   end
 
   private
